@@ -1,0 +1,28 @@
+CClientDC aDC(this);
+	int interval,x1,x2,y2;
+	y2 = y + 60;
+	interval = (1300 / num);
+	x1 = interval / 2;
+	
+	CBrush aBrush(RGB(255, 255, 255));
+	CPen aPen(PS_SOLID, 2, RGB(0,0,0));
+	
+	for (int i = 0;i < num;i++) {
+		if ( Str[N].IsEmpty() ) {
+			break;
+		}
+		aDC.MoveTo(x1 + i*interval+10, y2);
+		if (i % 2 == 0 && N != 0) {
+			aDC.LineTo(x1 + i*interval + interval / 2 + 20, y + 33);
+		}
+		else if (N != 0) {
+			aDC.LineTo(x1 + i*interval - interval / 2 + 20, y + 30);
+		}
+		aDC.Ellipse(x1+i*interval, y2, x1 + i*interval+30, y2 + 33);
+		aDC.DrawText(Str[N], CRect(x1 + i*interval + 10-6, y2 + 7, x1 + i*interval + 30, y2 + 30), 0);
+		N += 1;
+	}
+	if (!Str[N].IsEmpty() )
+	{
+		Drawtree(Str, num * 2, y2, N);
+	}
